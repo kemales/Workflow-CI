@@ -1,0 +1,40 @@
+name: Run MLflow Project CI
+
+# Trigger workflow ini setiap kali ada 'push' ke repository
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      # 1. Set up job
+      - name: Set up job
+        run: echo "Starting CI workflow..."
+
+      # 2. Run actions/checkout@v3
+      - name: Run actions/checkout@v3
+        uses: actions/checkout@v3
+
+      # 3. Set up Python 3.12.7
+      - name: Set up Python 3.12.7
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.12.7'
+
+      # 4. Check Env 
+      - name: Check Env
+        run: |
+          python --version
+          pip --version
+
+      # 5. Install dependencies
+      - name: Install dependencies
+        run: pip install mlflow
+
+      # 6. Run mlflow project
+      - name: Run mlflow project
+        run: mlflow run MLProject/
+
+      # 7. Get latest MLflow run_id
+      - name: Get latest MLflow run_id
+        run: echo "MLflow run finished."
