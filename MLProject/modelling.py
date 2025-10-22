@@ -7,7 +7,7 @@ from sklearn.metrics import accuracy_score
 import os
 
 # 1. Muat data
-data_path = os.path.join("namadataset_preprocessing", "pima_diabetes_preprocessing.csv")
+data_path = "pima_diabetes_preprocessing.csv"
 df = pd.read_csv(data_path)
 
 # 2. Pisahkan fitur (X) dan target (y)
