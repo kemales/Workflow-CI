@@ -39,7 +39,9 @@ jobs:
 
       # 6. Run mlflow project
       - name: Run mlflow project
-        run: mlflow run MLProject/
+        run: |
+          cd MLProject
+          mlflow run .
         shell: bash -l {0}
 
       # 7. Get latest MLflow run_id
